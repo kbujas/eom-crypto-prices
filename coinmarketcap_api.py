@@ -15,6 +15,9 @@ def get_price_at_eom_coin_market_cap(id_num: int,
             return None
         points_dict = price_data['data']['points']
         eom_price_data = find_eom_value(d=points_dict, timestamp=timestamp)
+        if eom_price_data is None:
+            print(points_dict)
+            return None
         price = eom_price_data['c'][0]
         
         return price
